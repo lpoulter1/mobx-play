@@ -1,22 +1,12 @@
 import React, { Component } from "react";
-import { Provider, observer, inject } from "mobx-react";
+import { Provider } from "mobx-react";
 import PlayerStore from "./Player/PlayerStore";
 import UiStore from "./Game/UiStore";
 import AddPlayer from "./Player/AddPlayer";
 import PlayerAction from "./Player/PlayerAction";
+import PlayersList from "./Player/PlayersList";
 import GameController from "./Game/GameController";
 import "./App.css";
-
-const PlayersList = inject("uiStore")(
-  observer(({ uiStore }) =>
-    uiStore.players.map(player => (
-      <div key={player.name}>
-        name: {player.name}: chips:{player.chips}: seat:{player.seat}:
-        foldedOrAllIn:{player.foldedOrAllIn}
-      </div>
-    ))
-  )
-);
 
 class App extends Component {
   render() {
