@@ -9,7 +9,7 @@ class PlayerAction extends React.Component {
   }
 
   handleAction(action) {
-    this.props.playerStore.players[0].fold();
+    this.props.uiStore.players[0].fold();
   }
 
   render() {
@@ -26,4 +26,4 @@ class PlayerAction extends React.Component {
   }
 }
 
-export default inject("playerStore")(observer(PlayerAction));
+export default inject("uiStore")(observer(PlayerAction));

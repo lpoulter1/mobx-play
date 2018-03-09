@@ -14,7 +14,7 @@ class AddPlayer extends React.Component {
 
   handleAddPlayer = () => {
     const { chips, name, seat } = this.state;
-    this.props.playerStore.addPlayer({ chips, name, seat });
+    this.props.uiStore.addPlayer({ chips, name, seat });
     this.setState({ addingPlayer: false });
   };
 
@@ -64,4 +64,4 @@ class AddPlayer extends React.Component {
   }
 }
 
-export default inject("playerStore")(observer(AddPlayer));
+export default inject("uiStore")(observer(AddPlayer));

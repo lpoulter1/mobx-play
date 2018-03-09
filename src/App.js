@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Provider, observer, inject } from "mobx-react";
 import PlayerStore from "./Player/PlayerStore";
+import UiStore from "./Game/UiStore";
 import AddPlayer from "./Player/AddPlayer";
 import PlayerAction from "./Player/PlayerAction";
-import Game from "./Game/Game";
+import GameController from "./Game/GameController";
 import "./App.css";
 
-const PlayersList = inject("playerStore")(
-  observer(({ playerStore }) =>
-    playerStore.players.map(player => (
+const PlayersList = inject("uiStore")(
+  observer(({ uiStore }) =>
+    uiStore.players.map(player => (
       <div key={player.name}>
         name: {player.name}: chips:{player.chips}: seat:{player.seat}:
         foldedOrAllIn:{player.foldedOrAllIn}
@@ -20,12 +21,12 @@ const PlayersList = inject("playerStore")(
 class App extends Component {
   render() {
     return (
-      <Provider playerStore={PlayerStore}>
-        <Game>
+      <Provider playerStore={PlayerStore} uiStore={UiStore}>
+        <GameController>
           <PlayersList />
           <AddPlayer />
           <PlayerAction />
-        </Game>
+        </GameController>
       </Provider>
     );
   }
